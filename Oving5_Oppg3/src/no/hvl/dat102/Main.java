@@ -14,12 +14,12 @@ public class Main {
 		
 		Parantessjekker test = new Parantessjekker();
 		
-		System.out.println("s1 skal bli true. Resultat = " + test.erBalansert(s1));
-		System.out.println("s2 skal bli true. Resultat = " + test.erBalansert(s2));
-		System.out.println("s3 skal bli true. Resultat = " + test.erBalansert(s3));
-		System.out.println("s4 skal bli false. Resultat = " + test.erBalansert(s4));
-		System.out.println("s5 skal bli false. Resultat = " + test.erBalansert(s5));
-		System.out.println("s6 skal bli false. Resultat = " + test.erBalansert(s6));
+		System.out.println("s1:" + s1 + ".    true = " + test.erBalansert(s1));
+		System.out.println("\ns2:" + s2 + ".    true = " + test.erBalansert(s2));
+		System.out.println("\ns3:" + s3 + ".    true = " + test.erBalansert(s2));
+		System.out.println("\ns4:" + s4 + ".    false = " + test.erBalansert(s2));
+		System.out.println("\ns5:" + s5 + ".    false = " + test.erBalansert(s2));
+		System.out.println("\ns6:" + s6 + ".    false = " + test.erBalansert(s2));
 		
 	}
 
