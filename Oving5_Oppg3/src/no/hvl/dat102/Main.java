@@ -10,7 +10,7 @@ public class Main {
 		String s3 = "{test[test(test)test]test}";
 		String s4 = "{{{]]]";
 		String s5 = "{{{}}}}";
-		String s6 = "((( )])";
+		String s6 = "(((   )])";
 		
 		Parantessjekker test = new Parantessjekker();
 		
