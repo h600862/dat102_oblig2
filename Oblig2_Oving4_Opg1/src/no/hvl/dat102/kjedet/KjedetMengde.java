@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.Random;
 
 import no.hvl.dat102.exception.EmptyCollectionException;
-import no.hvl.dat102.mengde.kjedet.LinearNode;
+import no.hvl.dat102.kjedet.LinearNode;
 import no.hvl.dat102.adt.MengdeADT;
 
 public class KjedetMengde<T> implements MengdeADT<T> {
