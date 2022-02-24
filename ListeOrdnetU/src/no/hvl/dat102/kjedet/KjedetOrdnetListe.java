@@ -150,7 +150,7 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 					siste = forrige;
 				}
 			}
-		} 
+		}
 		return svar;
 	}
 

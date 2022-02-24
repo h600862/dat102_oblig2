@@ -195,7 +195,7 @@ public abstract class ListeADTTest {
 		assertEquals(e4, liste.fjern(e4));
 		assertEquals(e5, liste.fjern(e5));
 		assertTrue(liste.erTom());
-	}
+	}  
 	/**
 	 * Prøver å ta ut et element fra en tom liste.
 	 * 

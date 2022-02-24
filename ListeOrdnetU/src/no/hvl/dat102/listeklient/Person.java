@@ -71,7 +71,7 @@ public class Person implements Comparable<Person> {
 					resultat = +1;
 				}
 			}
-		}
+		} 
 		return resultat;
 	}//
 

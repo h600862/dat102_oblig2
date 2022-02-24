@@ -60,7 +60,7 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		T resultat = liste[0];
 		return resultat;
 	}
-
+	
 	@Override
 	public T siste() {
 		if (erTom())
