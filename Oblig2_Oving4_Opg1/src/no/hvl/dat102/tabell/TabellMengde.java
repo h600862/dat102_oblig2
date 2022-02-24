@@ -240,7 +240,15 @@ public class TabellMengde<T> implements MengdeADT<T>,Iterable<T> {
 
 	@Override
 	public boolean undermengde(MengdeADT<T> m2) {
+		
 		boolean erUnderMengde = true;
+		for(int i = 0; i<antall ;i++) {
+			if(!m2.inneholder(tab[i])) {
+				erUnderMengde = false;
+			}
+		}
+		return erUnderMengde;
+	/**	boolean erUnderMengde = true;
 		
 		T element = null;
 		
@@ -255,7 +263,7 @@ public class TabellMengde<T> implements MengdeADT<T>,Iterable<T> {
 			}
 		}
 		
-		return erUnderMengde;
+		return erUnderMengde;*/
 	}
 
 	@Override

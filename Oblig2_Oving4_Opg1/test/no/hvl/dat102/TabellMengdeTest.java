@@ -53,7 +53,10 @@ class TabellMengdeTest {
 		
 		assertEquals(6, testUnion.antall());
 		assertEquals(true, testM.undermengde(testUnion));
-		assertEquals(true, testM2.undermengde(testUnion));
+		
+		testM2.leggTil(7);
+		
+		assertEquals(false, testM2.undermengde(testUnion));
 	}
 	
 	@Test
