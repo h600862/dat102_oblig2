@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Random;
 
 import no.hvl.dat102.exception.EmptyCollectionException;
+import no.hvl.dat102.mengde.kjedet.LinearNode;
 import no.hvl.dat102.adt.MengdeADT;
 
 public class KjedetMengde<T> implements MengdeADT<T> {
@@ -271,12 +272,15 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		return new KjedetIterator<T>(start);
 	}
 
-	public String toString(){// For klassen KjedetMengde 
-		String resultat = "";
+	
+	@Override
+	public String toString() {// For klassen
+
+		String resultat = " ";
 		LinearNode<T> aktuell = start;
-		while(aktuell != null){
-			resultat += aktuell.getElement().toString() + 
-					"\t"; aktuell = aktuell.getNeste();
+		while (aktuell != null) {
+			resultat += aktuell.getElement().toString() + "\t";
+			aktuell = aktuell.getNeste();
 		}
 		return resultat;
 	}
