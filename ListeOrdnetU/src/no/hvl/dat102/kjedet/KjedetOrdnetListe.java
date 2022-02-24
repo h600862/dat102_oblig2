@@ -27,6 +27,17 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 
 		T resultat = null;
 		// ...Fyll ut
+		
+		if (!erTom()) {
+			resultat = foerste.getElement();
+			if (antall == 1) {
+				foerste = null;
+				siste = null;
+			} else {
+				foerste = foerste.getNeste();
+			}
+			antall--;
+		}
 		return resultat;
 	}
 
@@ -37,6 +48,23 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 
 		T resultat = null;
 		// ...Fyll ut
+		
+		LinearNode<T> forrige = null, denne = foerste;
+		while (denne != null && siste.getElement().compareTo(denne.getElement()) > 0) {
+			forrige = denne;
+			denne = denne.getNeste();
+		}
+		if (antall > 0) {
+			resultat = siste.getElement();
+			if (antall == 1) {
+				foerste = null;
+				siste = null;
+			} else {
+				siste = forrige;
+				forrige.setNeste(null);
+			}
+			antall--;
+		}
 		return resultat;
 	}
 
@@ -74,6 +102,34 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	public void leggTil(T element) {
 
 		// ...Fyll ut
+		LinearNode<T> ny = new LinearNode<T>(element);
+
+		// Finn rett posisjon for nytt element
+		LinearNode<T> denne = foerste, forrige = null;
+		while (denne != null && element.compareTo(denne.getElement()) > 0) {
+			forrige = denne;
+			denne = denne.getNeste();
+		}
+
+		// Plasserer ny node mellom forrige og denne
+		if (antall == 0) { // Hvis mengden er tom og vi skal sette inn den
+							// foerste noden
+			foerste = ny;
+			siste = ny;
+		} else if (forrige == null) { // Setter inn det foerste elementet i
+										// mengden, men det er noder i mengden
+			foerste = ny;
+			ny.setNeste(denne);
+		} else { // Generelt tilfelle
+			forrige.setNeste(ny);
+			ny.setNeste(denne);
+		}
+
+		if (denne == null) { // Sjekker om noden vi satt inn er den siste i
+								// mengden
+			siste = ny;
+		}
+		antall++;
 	}
 
 	@Override

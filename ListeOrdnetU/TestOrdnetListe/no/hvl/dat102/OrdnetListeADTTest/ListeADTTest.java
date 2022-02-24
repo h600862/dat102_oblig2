@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.Assert.assertNull;
 
 import java.util.EmptyStackException;
 
@@ -11,6 +12,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 
+import no.hib.dat102.liste.kjedet.KjedetOrdnetListe;
 import no.hvl.dat102.adt.OrdnetListeADT;
 import no.hvl.dat102.exceptions.EmptyCollectionException;
 
@@ -79,6 +81,19 @@ public abstract class ListeADTTest {
 	public final void viseOrdnetIkkeAvtagende() {
 		// ... Fyll ut
 		// ... Legg til elementer og bruk fjernFoerste
+		liste.leggTil(e1); 
+		liste.leggTil(e2); 
+		liste.leggTil(e5); 
+		liste.leggTil(e0); 
+		liste.leggTil(e4); 
+		liste.leggTil(e3); 
+		
+		assertEquals(e0, liste.fjernFoerste()); 
+		assertEquals(e1, liste.fjernFoerste());
+		assertEquals(e2, liste.fjernFoerste());
+		assertEquals(e3, liste.fjernFoerste());
+		assertEquals(e4, liste.fjernFoerste());
+		assertEquals(e5, liste.fjernFoerste()); 
 	}
 
 	@Test
@@ -108,6 +123,12 @@ public abstract class ListeADTTest {
 	public final void leggTilOgfjernMedDuplikater() {
 		try {
 			// ... Fyll ut med å legge til passende elementer
+			liste.leggTil(e0); 
+			liste.leggTil(e1); 
+			liste.leggTil(e4); 
+			liste.leggTil(e1);
+			liste.leggTil(e2); 
+			liste.leggTil(e3); 
 
 			assertEquals(e0, liste.fjern(e0));
 			assertEquals(e1, liste.fjern(e1));
@@ -160,6 +181,20 @@ public abstract class ListeADTTest {
 	@Test
 	public final void leggTilFjernErTom() {
 		// ...Fyll ut. Legg inn elementer og fjern de
+		liste.leggTil(e0); 
+		liste.leggTil(e1); 
+		liste.leggTil(e2); 
+		liste.leggTil(e3);
+		liste.leggTil(e4); 
+		liste.leggTil(e5); 
+
+		assertEquals(e0, liste.fjern(e0)); 
+		assertEquals(e1, liste.fjern(e1));
+		assertEquals(e2, liste.fjern(e2));
+		assertEquals(e3, liste.fjern(e3));
+		assertEquals(e4, liste.fjern(e4));
+		assertEquals(e5, liste.fjern(e5));
+		assertTrue(liste.erTom());
 	}
 
 	/**
@@ -175,9 +210,6 @@ public abstract class ListeADTTest {
 	 */
 	@Test
 	public void foersteFraTom() {
-		Assertions.assertThrows(EmptyStackException.class, () -> {
-			liste.foerste();
-		});
+		assertNull("Fjerne fra tom liste", liste.fjern(e4));
 	}
-
 }
