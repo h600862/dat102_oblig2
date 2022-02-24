@@ -20,55 +20,67 @@ public class Parantessjekker implements ParantessjekkerADT {
 
 	@Override
 	public boolean erParentes(char p) {
-		return erVenstreparentes(p) || erHogreparentes(p);
+		boolean resultat = false;
+		if (erVenstreparentes(p) || erHogreparentes(p)) {
+			resultat = true;
+		}
+		return resultat;
 	}
 
 	@Override
 	public boolean erPar(char venstre, char hogre) {
-
-		int index = 0;
-
-		for (int i = 0; i < vpar.length-1; i++) {
-			if (vpar[i] == venstre) {
-				index = i;
-			}
+		boolean resultat = false;
+		
+		if (venstre == '{' && hogre == '}') {
+			resultat = true;
+		} else if (venstre == '(' && hogre == ')') {
+			resultat = true;
+		} else if (venstre == '[' && hogre == ']') {
+			resultat = true;
+		} else {
+			resultat = false;
 		}
-
-		return hpar[index] == hogre;
+		
+		return resultat;
 	}
 
 	@Override
 	public boolean erBalansert(String s) {
 		boolean resultat = true;
-
 		KjedetStabel<Character> parenteser = new KjedetStabel();
-		KjedetStabel<Character> hogreparenteser = new KjedetStabel();
-
-		for (int i = 0; i <= s.length() - 1; i++) {
+		
+		// looper gjennom hver char i string
+		for (int i = 0; i < s.length(); i++) {
+			
+			// variabel for char på s[i]
 			char elem = s.charAt(i);
+			
+			// hvis elem == parentes
 			if (erParentes(elem)) {
-				parenteser.push(elem);
+				
+				// legger til i stabel, hvis åpen parentes
+				if (erVenstreparentes(elem)) {
+					parenteser.push(elem);
+				} else {
+					char sisteAapne;
+					// sjekker om det er flere elementer igjen i stabel
+					// 		-> returner false hvis ikke 
+					try {
+						sisteAapne = parenteser.pop();
+					} catch (Exception e) {
+						return false;
+					}
+					
+					// sjekker lukke-parentes med siste åpne
+					if (!erPar(sisteAapne, elem)) {
+						return false;
+					}
+				}
 			}
 		}
 		
-		while (erHogreparentes(parenteser.peek())) {
-			char elem = parenteser.pop();
-			hogreparenteser.push(elem);
-		}
-
-		while (!parenteser.erTom() && !hogreparenteser.erTom()) {
-			char venstre;
-			char hogre;
-
-			venstre = parenteser.pop();
-			hogre = hogreparenteser.pop();
-			
-			if (!erPar(venstre,hogre)) {
-				return false;
-			}
-		}
-			
 		return resultat;
+		
 	}
 
 }
