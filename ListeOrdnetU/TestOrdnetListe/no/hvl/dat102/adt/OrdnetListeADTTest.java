@@ -100,12 +100,20 @@ public abstract class OrdnetListeADTTest {
 	public final void leggTilOgfjernMedDuplikater() {
 		// ... Fyll ut med å legge til passende elementer
 
+		liste.leggTil(e0); 
+		liste.leggTil(e1); 
+		liste.leggTil(e4); 
+		liste.leggTil(e1);
+		liste.leggTil(e2); 
+		liste.leggTil(e3); 
+		
 		assertEquals(e0, liste.fjern(e0));
 		assertEquals(e1, liste.fjern(e1));
 		assertEquals(e4, liste.fjern(e4));
 		assertEquals(e1, liste.fjern(e1));
 		assertEquals(e2, liste.fjern(e2));
 		assertEquals(e3, liste.fjern(e3));
+
 
 	}
 

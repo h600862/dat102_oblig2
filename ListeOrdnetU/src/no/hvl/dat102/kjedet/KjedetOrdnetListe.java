@@ -103,21 +103,18 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 
 		// ...Fyll ut
 		LinearNode<T> ny = new LinearNode<T>(element);
-
-		// Finn rett posisjon for nytt element
+	
 		LinearNode<T> denne = foerste, forrige = null;
+		
 		while (denne != null && element.compareTo(denne.getElement()) > 0) {
 			forrige = denne;
 			denne = denne.getNeste();
 		}
 
-		// Plasserer ny node mellom forrige og denne
-		if (antall == 0) { // Hvis mengden er tom og vi skal sette inn den
-							// foerste noden
+		if (antall == 0) { 
 			foerste = ny;
 			siste = ny;
-		} else if (forrige == null) { // Setter inn det foerste elementet i
-										// mengden, men det er noder i mengden
+		} else if (forrige == null) { 
 			foerste = ny;
 			ny.setNeste(denne);
 		} else { // Generelt tilfelle
@@ -125,8 +122,7 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 			ny.setNeste(denne);
 		}
 
-		if (denne == null) { // Sjekker om noden vi satt inn er den siste i
-								// mengden
+		if (denne == null) {
 			siste = ny;
 		}
 		antall++;
@@ -140,21 +136,21 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 			forrige = denne;
 			denne = denne.getNeste();
 		}
-		if (denne != null && element.equals(denne.getElement())) { // funnet
+		if (denne != null && element.equals(denne.getElement())) { 
 			antall--;
 			svar = denne.getElement();
-			if (forrige == null) { // Første element
+			if (forrige == null) { 
 				foerste = foerste.getNeste();
-				if (foerste == null) { // Tom liste
+				if (foerste == null) { 
 					siste = null;
 				}
-			} else { // Inni listen eller bak
+			} else { 
 				forrige.setNeste(denne.getNeste());
-				if (denne == siste) { // bak
+				if (denne == siste) {
 					siste = forrige;
 				}
 			}
-		} // ikke-funn
+		} 
 		return svar;
 	}
 
@@ -169,7 +165,7 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 			if (element.equals(denne.getElement())) {
 				resultat = true;
 			}
-		} // ikke-funn
+		}
 		return resultat;
 	}
 
