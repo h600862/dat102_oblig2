@@ -32,9 +32,9 @@ public class Main {
 		//  Oppgave 4 b) an = 5an-1 - 6an-2 + 2 for n > 1 og startkrav a0 = 2, a1 = 5
 		
 		System.out.println("Oppgave 4 b)");
-		int resultat2 = RekursjonMetode.fakultet(10);
-		System.out.println(10 + "!=" +resultat2);
-		System.out.println("Summen av n=100 er "+RekursjonMetode.sum(10));
+		int i = 10;
+		RekursjonMetode.tallfolge(i-2);//n-2 because 2 numbers are already printed
+		System.out.println();
 		
 		
 		//  Oppgave 4 c) fibrekursjon
@@ -48,7 +48,7 @@ public class Main {
 		System.out.println("Oppgave 4 d)");
 		
 		int sec = 10;
-		System.out.print(n1+" "+n2);//printing 0 and 1    
+		System.out.print(n1+" "+n2);  
 		RekursjonMetode.fibSec(sec-2);//n-2 because 2 numbers are already printed
 		System.out.println();
 	}

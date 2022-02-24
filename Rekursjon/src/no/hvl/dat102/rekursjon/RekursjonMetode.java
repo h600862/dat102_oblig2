@@ -84,15 +84,17 @@ public class RekursjonMetode{
 	         printFibonacci(n-1);    
 	     }    
 	 }
-	 
+	 static int a1=2,a2=5,a3=0;
 	 static void tallfolge(int n){ 
-		 int a1=2,a2=5,a3=0;
+		 
+		 int tab[];
 		    if(n>0){    
 		         a3 = a1 + a2;    
 		         a1 = a2;    
 		         a2 = a3;    
+		      //   tab = tab[a3];
 		         System.out.print(" "+a3);   
-		         printFibonacci(n-1);    
+		         tallfolge(n-1);    
 		     }    
 	 }
 }
