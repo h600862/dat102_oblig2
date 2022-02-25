@@ -32,32 +32,41 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 			aktuell = aktuell.getNeste();
 		}
 		// Legg inn foran aktuell
-		nyNode.setNeste(aktuell);
-		nyNode.setForrige(aktuell.getForrige());
-		aktuell.getForrige().setNeste(nyNode);
-		aktuell.setForrige(nyNode);
+		DobbelNode<T> neste = aktuell;
+		DobbelNode<T> forige = aktuell.getForrige();
+		
+		nyNode.setForrige(forige);
+		nyNode.setNeste(neste);
+		forige.setNeste(nyNode);
+		neste.setForrige(nyNode);
+		
+//		nyNode.setNeste(aktuell);
+//		nyNode.setForrige(aktuell.getForrige());
+//		aktuell.getForrige().setNeste(nyNode);
+//		aktuell.setForrige(nyNode);
 		antall++;
 
 	}
 
 	@Override
 	public T fjern(T el) {
-		T resultat = null;
-		if (erTom())
-			throw new EmptyCollectionException("dobbelkjedet ordnet liste er tom");
+		
+	/**	if (erTom())
+			throw new EmptyCollectionException("dobbelkjedet ordnet liste er tom");*/
 		DobbelNode<T> aktuell = finn(el);
-		if (aktuell != null) {// returner og slett
-			resultat = aktuell.getElement();
-			aktuell.getForrige().setNeste(aktuell.getNeste());
-			aktuell.getNeste().setForrige(aktuell.getForrige());
-
+		if (aktuell == null) {// returner og slett
+			return null;
 		}
-
-		return resultat;
+		
+		aktuell.getForrige().setNeste(aktuell.getNeste());
+		aktuell.getNeste().setForrige(aktuell.getForrige());
+		antall--;
+		return aktuell.getElement();
+		//return resultat;
 
 	}
 	public boolean fins(T el) {
-		return finn(el) != null ;
+		return finn(el) != null ? true:false;
 	}
 	/*
 	 * Returnerer referansen til noden hvis el fins, ellers returneres
@@ -67,7 +76,7 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 		
 		//TODO
 		DobbelNode<T> temp = null;
-		DobbelNode<T> aktuell = null;
+		DobbelNode<T> aktuell = foerste.getNeste();
 		
 		if(el.compareTo(foerste.getElement()) <= 0 || el.compareTo(siste.getElement()) >= 0) {
 			System.out.println("Ugyldig verdi");
@@ -77,7 +86,7 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 		}
 		if(el.compareTo(aktuell.getElement()) == 0) {
 			temp = aktuell;
-		}return aktuell;
+		}return temp;
 		
 	}
 	
@@ -86,8 +95,10 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 		while(aktuell != null) {
 			aktuell = aktuell.getNeste();
 		}
+		System.out.println();
 		System.out.println(foerste.getElement());
 		System.out.println(siste.getElement());
+		System.out.println();
 	}
 
 	@Override
