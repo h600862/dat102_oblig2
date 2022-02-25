@@ -10,33 +10,33 @@ public class KlientPerson {
 
 	public static void main(String[] args) {
 
-		OrdnetListeADT<String> liste1 = new KjedetOrdnetListe<String>();
-		OrdnetListeADT<String> liste2 = new TabellOrdnetListe<String>();
+		OrdnetListeADT<Integer> liste1 = new KjedetOrdnetListe<Integer>();
+		OrdnetListeADT<Integer> liste2 = new TabellOrdnetListe<Integer>();
 
 		Scanner in = new Scanner(System.in);
-		String person;
+		int foedselsaar;
 		String svar;
-
+		 
 		do {
-			System.out.println("Oppgi person?:");
-			person = in.nextLine();
+			System.out.println("Oppgi foedselsaar på person?:");
+			foedselsaar = in.nextInt();
 
-			liste1.leggTil(person);
-			liste2.leggTil(person);
-			
-			System.out.print("Oppgi flere personer [J/N]?:");
+			liste1.leggTil(foedselsaar);
+			liste2.leggTil(foedselsaar);
+			svar = in.nextLine();
+			System.out.print("Oppgi flere foedselsaar [J/N]?:");
 			svar = in.nextLine();
 
 		} while (svar.equals("j") || svar.equals("J"));
 
-		System.out.println("\nperson i stigende ordning:");
+		System.out.println("\nPersoners alder i stigende ordning:");
 
 		while(!liste1.erTom()) {
-			person = liste1.fjernFoerste();
-			System.out.println(person);
+			foedselsaar = liste1.fjernFoerste();
+			System.out.println(foedselsaar);
 		}
 
-		System.out.println("\nperson i synkende ordning:");
+		System.out.println("\nPersoners alder i synkende ordning:");
 
 		while (liste2.antall() > 0) {
 			System.out.print(liste2.fjernSiste() + " ");
