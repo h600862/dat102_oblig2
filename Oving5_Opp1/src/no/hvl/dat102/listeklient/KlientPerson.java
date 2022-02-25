@@ -16,7 +16,7 @@ public class KlientPerson {
 		Scanner in = new Scanner(System.in);
 		int foedselsaar;
 		String svar;
-		 
+		
 		do {
 			System.out.println("Oppgi foedselsaar på person?:");
 			foedselsaar = in.nextInt();
