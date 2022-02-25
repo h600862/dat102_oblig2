@@ -41,7 +41,7 @@ public class KlientPerson {
 		while(!liste2.erTom()) {
 			foedselsaar = liste2.fjernSiste();
 			System.out.println(foedselsaar);
-		}
+		} 
 		Person anne = new Person("Anne", "Iversen", 1996);
 		Person ole = new Person("Ole", "Vik", 1995);
 		Person bendik = new Person("Bendik", "Ness", 1997);
