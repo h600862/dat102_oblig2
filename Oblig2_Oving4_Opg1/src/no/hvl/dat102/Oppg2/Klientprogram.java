@@ -10,11 +10,11 @@ public class Klientprogram {
 	
 public static void main(String[] args) {
 		
-//		MengdeADT<Hobby> male = new TabellMengde<Hobby>() ;
-//		MengdeADT<Hobby> danse = new TabellMengde<Hobby>();
-//		MengdeADT<Hobby> sprint = new TabellMengde<Hobby>();
-//		MengdeADT<Hobby> spille = new TabellMengde<Hobby>();
-//		
+		MengdeADT<Hobby> male = new KjedetMengde<Hobby>() ;
+		MengdeADT<Hobby> danse = new KjedetMengde<Hobby>();
+		MengdeADT<Hobby> sprint = new KjedetMengde<Hobby>();
+		MengdeADT<Hobby> spille = new KjedetMengde<Hobby>();
+		
 //		Datakontakt b1 = new Medlem("Trygve Jenssen", male);
 //		Medlem b2 = new Medlem("Trygve Jenssen", danse);
 //		Medlem b3 = new Medlem("Trygve Jenssen", sprint);
@@ -47,6 +47,24 @@ public static void main(String[] args) {
 	//Medlem6 Joar | Male Sprint
 	//Medlem7 Rune | Sprint Male Spill
 	
+	Medlem m1 = new Medlem("Trygve Jenssen",-1);
+	m1.setHobbyer(male);
+	
+	Medlem m2 = new Medlem("Trygve Jenssen",-1);
+	m2.setHobbyer(male);
+	Medlem m3 = new Medlem("Trygve Jenssen",-1);
+	m3.setHobbyer(male);
+	Medlem m4 = new Medlem("Trygve Jenssen",-1);
+	m4.setHobbyer(male);
+	Medlem m5 = new Medlem("Trygve Jenssen",-1);
+	m5.setHobbyer(male);
+	Medlem m6 = new Medlem("Trygve Jenssen",-1);
+	m6.setHobbyer(male);
+	Medlem m7 = new Medlem("Trygve Jenssen",-1);
+	m7.setHobbyer(male);
+
+	
+	
 		Datakontakt arkiv = new Datakontakt();
 		Medlem medlem = Tekstgrensesnitt.lesMedlem();
 		arkiv.leggTilMedlem(medlem);
@@ -62,6 +80,8 @@ public static void main(String[] args) {
 		arkiv.leggTilMedlem(medlem6);
 		Medlem medlem7 = Tekstgrensesnitt.lesMedlem();
 		arkiv.leggTilMedlem(medlem7);
+		
+		
 		
 		Tekstgrensesnitt.skrivParListe(arkiv);
 		// Skriver ut HobbyListe til bruker

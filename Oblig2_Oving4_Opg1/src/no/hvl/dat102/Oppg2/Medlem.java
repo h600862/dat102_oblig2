@@ -16,9 +16,10 @@ public class Medlem {
 
 	}
 
-	public Medlem(String navn, MengdeADT<Hobby> hobbyer) {
+	public Medlem(String navn, int statusIndeks) {
 		this.navn = navn;
-		this.hobbyer = new KjedetMengde<Hobby>();
+		this.statusIndeks = statusIndeks;
+		//this.hobbyer = new KjedetMengde<Hobby>();
 		
 	}
 

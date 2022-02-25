@@ -22,7 +22,7 @@ public class Tekstgrensesnitt {
 			mengde.leggTil(new Hobby(s));
 		}
 		
-		return new Medlem(navn, mengde);
+		return new Medlem();
 
 	//	System.out.println("Skriv inn statusindeks: ");
 	//	int statusIndeks = Integer.parseInt(inskriv.nextLine());
