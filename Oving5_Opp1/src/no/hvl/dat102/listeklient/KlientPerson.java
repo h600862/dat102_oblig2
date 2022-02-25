@@ -29,17 +29,18 @@ public class KlientPerson {
 
 		} while (svar.equals("j") || svar.equals("J"));
 
-		System.out.println("\nPersoners alder i stigende ordning:");
+		System.out.println("\nPersoners alder fra eldst til yngst:");
 
 		while(!liste1.erTom()) {
 			foedselsaar = liste1.fjernFoerste();
 			System.out.println(foedselsaar);
 		}
 
-		System.out.println("\nPersoners alder i synkende ordning:");
+		System.out.println("\nPersoners alder fra yngst til eldst:");
 
-		while (liste2.antall() > 0) {
-			System.out.print(liste2.fjernSiste() + " ");
+		while(!liste2.erTom()) {
+			foedselsaar = liste2.fjernSiste();
+			System.out.println(foedselsaar);
 		}
 		Person anne = new Person("Anne", "Iversen", 1996);
 		Person ole = new Person("Ole", "Vik", 1995);
