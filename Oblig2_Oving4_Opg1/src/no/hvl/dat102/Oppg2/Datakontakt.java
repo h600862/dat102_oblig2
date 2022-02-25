@@ -13,6 +13,10 @@ public class Datakontakt {
 
 	}
 
+	public Datakontakt() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public static int getSTDK() {
 		return STDK;
 	}
@@ -99,6 +103,17 @@ public class Datakontakt {
 			medlemstabell[par].setStatusIndeks(-1);
 		}
 
+	}
+
+	public void tilbakestillStausIndeks(String medlemsnavn) {
+		int indeks = finnMedlemsIndeks(medlemsnavn);
+		int par = finnPartnerFor(medlemsnavn);
+
+		if (par > -1 && indeks > -1) {
+			medlemstabell[indeks].setStatusIndeks(-1);
+			medlemstabell[par].setStatusIndeks(-1);
+		}
+		
 	}
 	
 }

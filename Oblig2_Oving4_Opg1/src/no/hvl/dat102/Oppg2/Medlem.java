@@ -10,6 +10,7 @@ public class Medlem {
 	private MengdeADT<Hobby> hobbyer;
 	private int statusIndeks;
 	// … Konstruktør
+	public Object Tekstgrensesnitt;
 
 	public Medlem() {
 
@@ -74,5 +75,10 @@ public class Medlem {
 		}
 		System.out.println("Status: " + statusIndeks);
 
+	}
+
+	public static void leggTilMedlem(Medlem medlem) {
+		// TODO Auto-generated method stub
+		
 	}
 }

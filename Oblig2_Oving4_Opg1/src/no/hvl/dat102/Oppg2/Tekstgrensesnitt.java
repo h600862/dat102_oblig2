@@ -12,7 +12,7 @@ public class Tekstgrensesnitt {
 		System.out.println("Skriv inn navn: ");
 		String navn = inskriv.nextLine();
 
-		System.out.println("Skriv inn hobbyer: ");
+		System.out.println("Skriv inn hobbyer avskilt med mellomrom: ");
 		String hobbyInn = inskriv.nextLine();
 		// MengdeADT<Hobby> hobbyer= getHobbyNavn(hobbyInn);
 		String[] hobbyListe = hobbyInn.split(" ");
