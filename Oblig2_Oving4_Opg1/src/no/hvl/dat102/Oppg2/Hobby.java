@@ -20,7 +20,7 @@ public class Hobby {
 		// … returnerer hobbynavnet med ”<” foran og ”>” bak som
 		// String (Eksempel: <tegne, male>)
 		// Merk: Kan også ha uten parenteser, «<» og «>», men forsøk med..
-		return "<" + hobbyNavn + ">";
+		return hobbyNavn;
 	}
 
 	@Override

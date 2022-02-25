@@ -5,16 +5,16 @@ public class Datakontakt {
 	private int antallMedlemmer;
 	private static int STDK = 100;
 
-	public Datakontakt(Medlem[] medlem, int antall) {
+	public Datakontakt(Medlem[] medlem) {
 
-		medlemstabell = new Medlem[STDK];
 		medlemstabell = medlem;
-		antallMedlemmer = antall;
+		antallMedlemmer = medlemstabell.length -1;
 
 	}
 
 	public Datakontakt() {
-		// TODO Auto-generated constructor stub
+		medlemstabell = new Medlem[STDK];
+		antallMedlemmer = 0;
 	}
 
 	public static int getSTDK() {
@@ -46,10 +46,10 @@ public class Datakontakt {
 		if (antallMedlemmer == medlemstabell.length) {
 			utvid();
 		}
+		
 		medlemstabell[antallMedlemmer] = person;
 		antallMedlemmer++;
 
-	
 	}
 
 	private void utvid() {
@@ -78,30 +78,18 @@ public class Datakontakt {
 	}
 
 	public int finnPartnerFor(String medlemsnavn) {
-
+		int resultat = -1;
 		int indeks = finnMedlemsIndeks(medlemsnavn);
-		int par = -1;
-		for (int i = 0; i < medlemstabell.length && par < 0; i++) {
-			if (medlemstabell[indeks].passerTil(medlemstabell[i])) {
-				indeks = i;
-				medlemstabell[indeks].setStatusIndeks(par);
-				medlemstabell[par].setStatusIndeks(indeks);
+		
+		for (int i = 0; i < medlemstabell.length && resultat < 0; i++) {
+			if (medlemstabell[indeks].passerTil(medlemstabell[i]) && indeks != i) {
+				resultat = i;
+				medlemstabell[indeks].setStatusIndeks(resultat);
+				medlemstabell[resultat].setStatusIndeks(indeks);
 			}
 		}
-		return par;
-
-	
-	}
-
-	public void tilbakesillStatusIndeks(String medlemsnavn) {
-
-		int indeks = finnMedlemsIndeks(medlemsnavn);
-		int par = finnPartnerFor(medlemsnavn);
-
-		if (par > -1 && indeks > -1) {
-			medlemstabell[indeks].setStatusIndeks(-1);
-			medlemstabell[par].setStatusIndeks(-1);
-		}
+		
+		return resultat;
 
 	}
 

@@ -9,18 +9,12 @@ public class Medlem {
 	private String navn;
 	private MengdeADT<Hobby> hobbyer;
 	private int statusIndeks;
+	
 	// … Konstruktør
-	public Object Tekstgrensesnitt;
-
-	public Medlem() {
-
-	}
-
-	public Medlem(String navn, int statusIndeks) {
+	public Medlem(String navn) {
 		this.navn = navn;
-		this.statusIndeks = statusIndeks;
-		//this.hobbyer = new KjedetMengde<Hobby>();
-		
+		this.statusIndeks = -1;
+		hobbyer = new KjedetMengde<Hobby>();
 	}
 
 	public String getNavn() {
@@ -39,8 +33,8 @@ public class Medlem {
 		this.navn = navn;
 	}
 
-	public void setHobbyer(MengdeADT<Hobby> hobbyer) {
-		this.hobbyer = hobbyer;
+	public void setNyHobby(Hobby nyHobby) {
+		hobbyer.leggTil(nyHobby);
 	}
 
 	public void setStatusIndeks(int statusIndeks) {
@@ -53,15 +47,21 @@ public class Medlem {
 		boolean passer = false;
 		MengdeADT<Hobby> midler = this.getHobbyer();
 		MengdeADT<Hobby> midler2 = medlem2.getHobbyer();
+		
 		if (midler == midler2) {
 			passer = true;
 		}
 		if (midler2 == null) {
-			passer = false;
+			return false;
 		}
 		if (midler.getClass() != midler2.getClass()) {
 			passer = false;
 		}
+		
+		if (midler.undermengde(midler2) && midler2.undermengde(midler)) {
+			passer = true;
+		}
+		
 		return passer;
 		// return hobbyer.equals(medlem2.getHobbyer());
 	}
@@ -71,15 +71,20 @@ public class Medlem {
 	public void skrivUt() {
 		Iterator<Hobby> t = hobbyer.iterator();
 		System.out.println("Navn: " + navn);
+		
+		String medlemHobbyer = "<";
+		
 		while (t.hasNext()) {
-			System.out.println(t.next().toString());
+			medlemHobbyer += (t.next().toString());
+			if (t.hasNext()) {
+				medlemHobbyer += ", ";
+			}
 		}
+		
+		medlemHobbyer += ">";
+		
+		System.out.println(medlemHobbyer);
 		System.out.println("Status: " + statusIndeks);
 
-	}
-
-	public static void leggTilMedlem(Medlem medlem) {
-		// TODO Auto-generated method stub
-		
 	}
 }
